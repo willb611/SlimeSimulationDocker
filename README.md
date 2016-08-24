@@ -9,7 +9,7 @@ Please note this is quite a bloated installation due to mono-complete (0.8GB) :(
 
 ##Run the application
 ```
-sudo docker run -it \
+sudo docker run -it --rm \
     --user=$USER \
     --env="DISPLAY" \
     --volume="/etc/group:/etc/group:ro" \
