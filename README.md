@@ -1,7 +1,7 @@
 # Run Slime simulation as docker (Unix)
 Please note this is quite a bloated installation due to mono-complete (0.8GB) :(
 ## Start docker
-``` sudo docker service start ```
+``` sudo service docker start ```
 
 ## Build it
 ```sudo docker build . -t slimesim:latest```
