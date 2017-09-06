@@ -1,0 +1,85 @@
+master U:2 ?:1 ✗| → sudo docker run slimesim
+* Assertion at metadata.c:3643, condition `ptr' not met
+
+Stacktrace:
+
+  at <unknown> <0xffffffff>
+  at System.Configuration.Configuration.Init (System.Configuration.Internal.IConfigSystem,string,System.Configuration.Configuration) <0x001a7>
+  at System.Configuration.Configuration..ctor (System.Configuration.InternalConfigurationSystem,string) <0x00173>
+  at System.Configuration.Configuration..ctor (System.Configuration.InternalConfigurationSystem,string) <0x0012f>
+  at System.Configuration.InternalConfigurationFactory.Create (System.Type,object[]) <0x0006f>
+  at System.Configuration.ConfigurationManager.OpenExeConfigurationInternal (System.Configuration.ConfigurationUserLevel,System.Reflection.Assembly,string) <0x003e2>
+  at System.Configuration.ClientConfigurationSystem.get_Configuration () <0x00043>
+  at System.Configuration.ClientConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection (string) <0x00017>
+  at System.Configuration.ConfigurationManager.GetSection (string) <0x0002d>
+  at NLog.Config.XmlLoggingConfiguration.get_AppConfig () <0x0001b>
+  at NLog.LogFactory.get_Configuration () <0x0011f>
+  at NLog.LogFactory.GetLogger (NLog.LogFactory/LoggerCacheKey) <0x00547>
+  at NLog.LogFactory.GetLogger (string) <0x0004f>
+  at NLog.LogManager.GetCurrentClassLogger () <0x0003f>
+  at SlimeSimulation.Program..cctor () <0x0000b>
+  at (wrapper runtime-invoke) object.runtime_invoke_void (object,intptr,intptr,intptr) <0x0005a>
+
+Native stacktrace:
+
+	mono() [0x4a77ca]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0xf8d0) [0x7f76e5ef28d0]
+	/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x37) [0x7f76e5957067]
+	/lib/x86_64-linux-gnu/libc.so.6(abort+0x148) [0x7f76e5958448]
+	mono() [0x6408d9]
+	mono() [0x640ae7]
+	mono() [0x640c36]
+	mono() [0x56513e]
+	mono() [0x4155a4]
+	mono() [0x4600ba]
+	mono() [0x46ad6a]
+	mono() [0x45659a]
+	mono() [0x504d42]
+	mono() [0x50653f]
+	mono() [0x425332]
+	mono() [0x425ff9]
+	mono(mono_runtime_invoke+0x61) [0x5b5591]
+	mono() [0x5b5a83]
+	mono() [0x506918]
+	mono() [0x425332]
+	mono() [0x425c6b]
+	mono() [0x4aa101]
+	mono() [0x4aab38]
+	[0x40b09289]
+
+Debug info from gdb:
+
+
+=================================================================
+Got a SIGABRT while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries
+used by your application.
+=================================================================
+
+* Assertion at metadata.c:3643, condition `ptr' not met
+
+
+Unhandled Exception:
+System.TypeInitializationException: The type initializer for 'SlimeSimulation.Program' threw an exception. ---> System.NullReferenceException: Object reference not set to an instance of an object
+  at System.Configuration.ClientConfigurationSystem.get_Configuration () <0x413eeba0 + 0x000d3> in <filename unknown>:0
+  at System.Configuration.ClientConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection (System.String configKey) <0x413eeb20 + 0x00017> in <filename unknown>:0
+  at System.Configuration.ConfigurationManager.GetSection (System.String sectionName) <0x413ee8d0 + 0x0002d> in <filename unknown>:0
+  at NLog.Config.XmlLoggingConfiguration.get_AppConfig () <0x413ee870 + 0x0001b> in <filename unknown>:0
+  at NLog.LogFactory.get_Configuration () <0x413ee410 + 0x0011f> in <filename unknown>:0
+  at NLog.LogFactory.GetLogger (NLog.LoggerCacheKey cacheKey) <0x413edc30 + 0x00547> in <filename unknown>:0
+  at NLog.LogFactory.GetLogger (System.String name) <0x413ed7e0 + 0x0004f> in <filename unknown>:0
+  at NLog.LogManager.GetCurrentClassLogger () <0x413e8e80 + 0x0003f> in <filename unknown>:0
+  at SlimeSimulation.Program..cctor () <0x413e8d50 + 0x0000b> in <filename unknown>:0
+  --- End of inner exception stack trace ---
+[ERROR] FATAL UNHANDLED EXCEPTION: System.TypeInitializationException: The type initializer for 'SlimeSimulation.Program' threw an exception. ---> System.NullReferenceException: Object reference not set to an instance of an object
+  at System.Configuration.ClientConfigurationSystem.get_Configuration () <0x413eeba0 + 0x000d3> in <filename unknown>:0
+  at System.Configuration.ClientConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection (System.String configKey) <0x413eeb20 + 0x00017> in <filename unknown>:0
+  at System.Configuration.ConfigurationManager.GetSection (System.String sectionName) <0x413ee8d0 + 0x0002d> in <filename unknown>:0
+  at NLog.Config.XmlLoggingConfiguration.get_AppConfig () <0x413ee870 + 0x0001b> in <filename unknown>:0
+  at NLog.LogFactory.get_Configuration () <0x413ee410 + 0x0011f> in <filename unknown>:0
+  at NLog.LogFactory.GetLogger (NLog.LoggerCacheKey cacheKey) <0x413edc30 + 0x00547> in <filename unknown>:0
+  at NLog.LogFactory.GetLogger (System.String name) <0x413ed7e0 + 0x0004f> in <filename unknown>:0
+  at NLog.LogManager.GetCurrentClassLogger () <0x413e8e80 + 0x0003f> in <filename unknown>:0
+  at SlimeSimulation.Program..cctor () <0x413e8d50 + 0x0000b> in <filename unknown>:0
+  --- End of inner exception stack trace ---
+
