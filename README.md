@@ -1,10 +1,14 @@
 # Run Slime simulation as docker (Unix)
 Please note this is quite a bloated installation due to mono-complete (0.8GB) :(
+## This is broken
+It's broken because I added some stuff to build an .exe and put everything into that, allowing me to copy/paste the exe around and run it from whichever folder on my windows laptop.
+Please see the [actual slime simulation code repository](https://github.com/willb611/SlimeSimulation).
+
 ## Start docker
 ``` sudo service docker start ```
 
 ## Build it
-```sudo docker build . -t slimesim:latest```
+```sudo docker build -t slimesim:latest .```
 
 
 ## Run the application
